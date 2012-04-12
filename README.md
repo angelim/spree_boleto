@@ -2,6 +2,8 @@
 
 Uma extensão do [Spree](http://spreecommerce.com) para permitir pagamentos utilizando boletos.
 
+Este é um trabalho em estágio inicial de desenvolvimento e ainda não funcional.
+
 ## Instalação
 
 Adicione spree ao gemfile da sua aplicação, e também:
