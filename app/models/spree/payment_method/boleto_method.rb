@@ -10,7 +10,7 @@ module Spree
     }
     
     def payment_source_class
-      Boleto
+      BoletoDoc
     end
   end
 end

@@ -1,0 +1,38 @@
+<html>
+<head>
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+	<title>Imprimir Boleto</title>
+	<style type="text/css" media="screen">
+		body {margin:0; padding:0; line-height: 1.4em; word-spacing:1px; letter-spacing:0.2px; font: 13px Arial, Helvetica,"Lucida Grande", serif; color: #000;}
+
+		/*Header*/
+		h2 {color:#000; font-size:25px;}
+		.post .entry h2 {font-size:20px;}
+
+		/* Links */
+		a:link, a:visited {background: transparent; color:#333; text-decoration:none;}
+		a:link[href^="http://"]:after, a[href^="http://"]:visited:after {content: " (" attr(href) ") "; font-size: 11px;}
+		a[href^="http://"] {color:#000;} 
+
+		/*Image*/
+		img, img a, .more-link a {border:none;}
+
+		/*Remove Element*/
+		#logo, #catnavi, .topnavi, .more-link, .navigation, #sidebartop, #related, #social, #sponsors, .tabs, #allpost, .toolbar, .splitbox, #commentform, #commentabs .idTabs, .postmeta-content .comments, #respond h3, .tag, .footerlinks {display:none;}
+
+		.another-boleto {page-break-before: always;}
+		.print					{ text-align:center; font-size:20px;}
+		.boleto					{ width:800;}
+	</style>
+</head>
+<body>
+	<div class="boleto">
+		<div class="print">
+			<form>
+				<input type="button" value="Imprimir" onClick="window.print()">
+			</form>
+		</div>
+		<%= image_tag boleto_doc_path(@boleto_doc, :format => :image), :width => "800" %>
+	</div>
+</body>
+</html>

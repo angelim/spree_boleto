@@ -1,8 +1,6 @@
 Spree::Core::Engine.routes.prepend do
   scope :admin do
-    resources :boletos
+    resources :boleto_docs
   end
-  resources :orders do
-    resources :boletos
-  end
+  resources :boleto_docs
 end

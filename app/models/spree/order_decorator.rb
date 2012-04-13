@@ -1,5 +1,5 @@
 Spree::Order.class_eval do
-  has_many :boletos
+  has_many :boleto_docs
   
   def payable_via_boleto?
     !!self.class.boleto_payment_method
