@@ -2,7 +2,15 @@
 pt-BR:
   created_at: "Criado em:" 
   updated_at: "Atualizado em:"
+  boleto:
+    paid: Pago
+    pending: Pendente
+    cancelled: Cancelado
   activerecord:
+    models:
+      spree/boleto_doc:
+        one: Boleto
+        other: Boletos
     attributes:
       spree/boleto_doc:
         due_date: "Vencimento"

@@ -5,6 +5,8 @@
     <div data-hook="due_date">
       <%= label_tag nil, Spree::BoletoDoc.human_attribute_name(:due_date) %><br />
       <%= text_field_tag "#{param_prefix}[due_date]", '', :class => 'required', :size => 19, :maxlength => 19 %>
+      <%= hidden_field_tag "#{param_prefix}[order_id]", @order.id %>
+      <%= hidden_field_tag "#{param_prefix}[status]", "pending" %>
       <span class="req">*</span>
       &nbsp;
       <span id="card_type" style="display:none;">

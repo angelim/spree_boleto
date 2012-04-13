@@ -1,0 +1,14 @@
+<p class="download">
+	<%= link_to "download pdf", boleto_docs_path(:order_number => @order.number, :format => :pdf) %>
+</p>
+<div class="print">
+	<form>
+		<input type="button" value="Imprimir" onClick="window.print()">
+	</form>
+</div>
+
+<% @order.boleto_docs.each do |boleto_doc| %>
+	<div class="boleto another-boleto">
+		<%= image_tag boleto_doc_path(boleto_doc, :format => :image), :width => "800" %>
+	</div>
+<% end %>

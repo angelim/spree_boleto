@@ -1,0 +1,9 @@
+<% if @order.payment_method.instance_of? Spree::PaymentMethod::BoletoMethod %>
+  <% if @order.boleto_docs.pending.empty? %>
+    Este pedido foi pago via Boleto
+  <% else %>
+		<p>pago: <%= number_to_currency @order.payment_total %></p>
+		<p>pendente: <%= number_to_currency @order.outstanding_balance %></p>
+		<%= link_to "ver boletos pendentes", boleto_docs_path(:order_number => @order.number), :class => "btn btn-primary" %>
+  <% end %>
+<% end %>
