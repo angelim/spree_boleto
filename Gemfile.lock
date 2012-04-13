@@ -1,18 +1,17 @@
-GIT
-  remote: git://github.com/kivanio/brcobranca.git
-  revision: c8f144fa270fec1ac11085c2036514fd0e5e605e
+PATH
+  remote: .
+  specs:
+    spree_boleto (0.0.1)
+      spree_core
+
+PATH
+  remote: /Users/angelim/github/brcobranca
   specs:
     brcobranca (3.0.0)
       activemodel (>= 3.0.0)
       parseline (>= 1.0.3)
       rghost (>= 0.8.7)
       rghost_barcode (>= 0.8)
-
-PATH
-  remote: .
-  specs:
-    spree_boleto (0.0.1)
-      spree_core
 
 GEM
   remote: http://rubygems.org/

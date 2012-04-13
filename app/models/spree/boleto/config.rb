@@ -1,6 +1,7 @@
 module Spree
   module Boleto
     class Config < Spree::Preferences::Configuration
+      preference :parcelas, :integer
       preference :banco, :string
       preference :formato, :string
       preference :convenio, :string

@@ -1,5 +1,5 @@
 <p class="download">
-	<%= link_to "download pdf", order_boleto_doc_path(@order.number, @boleto_doc, :format => :pdf) %>
+	<%= link_to "voltar", order_path(@order.number) %> | <%= link_to "download pdf", order_boleto_doc_path(@order.number, @boleto_doc, :format => :pdf) %>
 </p>
 <div class="print">
 	<form>
