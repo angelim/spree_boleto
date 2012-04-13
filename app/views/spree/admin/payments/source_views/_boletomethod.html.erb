@@ -1,0 +1,22 @@
+<fieldset data-hook="boleto">
+  <legend>Boleto</legend>
+
+  <table class="index">
+    <tr>
+			<th><%= Spree::BoletoDoc.human_attribute_name(:document_number) %></th>
+      <th><%= t(:created_at) %></th>
+      <th><%= Spree::BoletoDoc.human_attribute_name(:due_date) %></th>
+      <th><%= Spree::BoletoDoc.human_attribute_name(:status) %></th>
+      <th><%= Spree::BoletoDoc.human_attribute_name(:paid_at) %></th>
+    </tr>
+    <tr>
+			<td><%= payment.source.document_number %></td>
+			<td><%= l payment.source.created_at %></td>
+			<td><%= l payment.source.due_date %></td>
+			<td><%= payment.source.status %></td>
+			<td><%= payment.source.paid_at %></td>
+    </tr>
+  </table>
+</fieldset>
+
+
