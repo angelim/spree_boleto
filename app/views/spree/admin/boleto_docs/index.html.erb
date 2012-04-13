@@ -41,6 +41,7 @@
       <th><%= sort_link @search, :status,         	Spree::BoletoDoc.human_attribute_name(:status) %></th>
       <th><%= sort_link @search, :order_id,         t(:order) %></th>
       <th><%= sort_link @search, :amount,          	t(:amount) %></th>
+			<th>link</th>
       <th data-hook="admin_boletos_index_header_actions"></th>
     </tr>
   </thead>
@@ -52,6 +53,19 @@
       <td><%= t("boleto.#{boleto_doc.status}") %></td>
       <td><%= link_to boleto_doc.order.number, admin_order_path(boleto_doc.order) %></td>
       <td><%= number_to_currency boleto_doc.amount %></td>
+			<td>
+				<p>
+					individual =>
+					impressao: <%= clippy order_boleto_doc_url(boleto_doc.order.number, boleto_doc, :auth_token => boleto_doc.order.user.authentication_token) %>
+					pdf: <%= clippy order_boleto_doc_url(boleto_doc.order.number, boleto_doc, :auth_token => boleto_doc.order.user.authentication_token, :format => :pdf) %>
+				</p>
+				<p>
+					pendentes =>
+					impressao: <%= clippy order_boleto_docs_url(boleto_doc.order.number, :auth_token => boleto_doc.order.user.authentication_token) %>
+					pdf: <%= clippy order_boleto_docs_url(boleto_doc.order.number, :auth_token => boleto_doc.order.user.authentication_token, :format => :pdf) %>
+				</p>
+				
+			</td>
       <td class='actions' data-hook="admin_boletos_index_row_actions">
         <% boleto_doc.payment.actions.each do |action| %>
           <%= button_to t(action), fire_admin_order_payment_path(boleto_doc.order, boleto_doc.payment, :e => action), :method => :put %>

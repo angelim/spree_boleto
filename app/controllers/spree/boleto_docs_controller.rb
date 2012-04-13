@@ -1,10 +1,13 @@
 # encoding:utf-8
 module Spree
-  class BoletoDocsController < ApplicationController
+  class BoletoDocsController < Spree::BaseController
+    before_filter :check_authorization
+    before_filter :load_order
+    respond_to :html, :image, :pdf
+
     layout "spree/layouts/print_layout"
     
     def index
-      @order = Order.find_by_number(params[:order_number])
       @boletos = []
       @order.boleto_docs.pending.each do |boleto_doc|
         @boletos << boleto_doc.payload
@@ -20,7 +23,7 @@ module Spree
     end
     
     def show
-      @boleto_doc = BoletoDoc.find(params[:id])
+      @boleto_doc = @order.boleto_docs.find(params[:id])
       @boleto = @boleto_doc.payload
       respond_to do |format|
         format.html
@@ -35,6 +38,22 @@ module Spree
           send_data @boleto.to(formato), :filename => "boleto_#{@boleto_doc.order.number}_#{@boleto_doc.id}.#{formato}", :disposition => 'inline', :type => PaymentMethod::BoletoMethod::FORMATS[formato]
         end
       end
+    end
+    
+    private 
+    def check_authorization
+      session[:access_token] ||= params[:token]
+      order = current_order || Spree::Order.find_by_number(params[:order_id])
+
+      if order
+        authorize! :edit, order, session[:access_token]
+      else
+        authorize! :create, Spree::Order
+      end
+    end
+    
+    def load_order
+      @order = Spree::Order.find_by_number(params[:order_id])
     end
   end
 end

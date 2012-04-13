@@ -18,7 +18,6 @@ Gem::Specification.new do |s|
   s.requirements << 'none'
 
   s.add_dependency 'spree_core'
-  # s.add_dependency 'brcobranca'
 
   s.add_development_dependency 'factory_girl'
   s.add_development_dependency 'ffaker'

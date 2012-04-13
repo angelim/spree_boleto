@@ -172,6 +172,7 @@ DEPENDENCIES
   brcobranca!
   factory_girl
   ffaker
+  rghost (>= 0.8.7.6)
   rspec-rails (~> 2.7)
   spree_boleto!
   sqlite3
