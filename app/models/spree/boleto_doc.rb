@@ -16,13 +16,14 @@ module Spree
       prefs = Spree::Boleto::Configuration.preferences.dup
       banco = prefs.delete(:banco).classify      
       formato = prefs.delete(:formato)
+      parcelas = prefs.delete(:parcelas)
       @boleto = "Brcobranca::Boleto::#{banco}".constantize.new(prefs)
       @boleto.sacado = order.name
       @boleto.valor = payment.amount
       @boleto.numero_documento = id
       @boleto.data_documento = Date.today
       @boleto.sacado_endereco = order.bill_address.full_address
-      @boleto.sacado_documento = ""
+      @boleto.sacado_documento = order.bill_address.document
       @boleto.vencimento_fixo = due_date
       self.payload = @boleto
       self.document_number = @boleto.numero_documento
