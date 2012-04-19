@@ -46,7 +46,21 @@
     </tr>
   </thead>
   <tbody>
-	<%= render :partial => "boleto_links", :collection => @boleto_docs, :as => :boleto_doc %>
+		<% @boleto_docs.each do |boleto_doc| %>
+			<tr data-hook="admin_boletos_index_rows">
+			  <td><%= l (@show_only_completed ? boleto_doc.paid_at : boleto_doc.due_date).to_date %></td>
+			  <td><%= link_to boleto_doc.document_number, admin_order_payment_path(boleto_doc.order, boleto_doc.payment) %></td>
+			  <td><%= t("boleto.#{boleto_doc.status}") %></td>
+			  <td><%= link_to boleto_doc.order.number, admin_order_path(boleto_doc.order) %></td>
+			  <td><%= number_to_currency boleto_doc.amount %></td>
+				<%= render :partial => "boleto_links", :object => boleto_doc, :as => :boleto_doc %>
+				<td class='actions' data-hook="admin_boletos_index_row_actions">
+			    <% boleto_doc.payment.actions.each do |action| %>
+			      <%= button_to t(action), fire_admin_order_payment_path(boleto_doc.order, boleto_doc.payment, :e => action), :method => :put %>
+			    <% end %>
+			  </td>
+			</tr>
+		<% end %>
   </tbody>
 </table>
 <%= paginate @boleto_docs %>

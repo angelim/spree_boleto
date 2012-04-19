@@ -8,7 +8,7 @@
       <th><%= Spree::BoletoDoc.human_attribute_name(:due_date) %></th>
       <th><%= Spree::BoletoDoc.human_attribute_name(:status) %></th>
       <th><%= Spree::BoletoDoc.human_attribute_name(:paid_at) %></th>
-			<th></th>
+			<th>links</th>
     </tr>
     <tr>
 			<td><%= payment.source.document_number %></td>
@@ -17,9 +17,7 @@
 			<td><%= payment.source.status %></td>
 			<td><%= payment.source.paid_at %></td>
 			<% if payment.pending? %>
-			<td>
 				<%= render :partial => "spree/admin/boleto_docs/boleto_links", :object => payment.source, :as => :boleto_doc %>
-			</td>
 			<% end %>
     </tr>
   </table>
