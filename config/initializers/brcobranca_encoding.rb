@@ -1,5 +1,5 @@
 module Brcobranca
-  module Configuration
+  class Configuration
     attr_accessor :external_encoding
   end
 end
