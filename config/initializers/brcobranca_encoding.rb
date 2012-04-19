@@ -1,3 +1,8 @@
+module Brcobranca
+  module Configuration
+    attr_accessor :external_encoding
+  end
+end
 Brcobranca.setup do |config|
   config.external_encoding = 'ascii-8bit'
   config.resolucao = 300
