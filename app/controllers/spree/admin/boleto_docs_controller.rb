@@ -17,7 +17,9 @@ module Spree
           params[:search][:due_date_less_than] = Time.zone.parse(params[:search][:due_date_less_than]).end_of_day rescue ""
         end
 
-        @boleto_docs = Spree::BoletoDoc.metasearch(params[:search]).includes([:order, :payment]).page(params[:page]).per(Spree::Config[:orders_per_page])
+        @boleto_docs = Spree::BoletoDoc.metasearch(params[:search])
+          .joins(:order, :payment).includes([:order, :payment])
+          .page(params[:page]).per(Spree::Boleto::Configuration[:per_page])
         respond_with(@boleto_docs)
       end
     end

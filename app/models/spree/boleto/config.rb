@@ -27,6 +27,7 @@ module Spree
       preference :instrucao7, :string
       preference :local_pagamento, :string
       preference :aceite, :string
+      preference :per_page, :integer
     end
   end
 end

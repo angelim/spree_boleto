@@ -29,9 +29,3 @@ Spree::CheckoutController.class_eval do
   end
 end
 
-Spree::Admin::PaymentsController.class_eval do
-  def new
-    @payment = @order.payments.build(:payment_method => @order.payment.payment_method)
-    respond_with(@payment)
-  end
-end

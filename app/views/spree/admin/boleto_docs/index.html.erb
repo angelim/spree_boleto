@@ -19,6 +19,14 @@
         <%= label_tag nil, t(:document_number) %><br />
         <%= f.text_field :document_number_like, :size => 25 %>
       </p>
+      <p>
+        <%= f.label :amount_greater_than_or_equal_to, t(:amount_greater_than_or_equal_to) %><br />
+        <%= f.text_field :amount_greater_than_or_equal_to, :size => 15 %>
+      </p>
+      <p>
+        <%= f.label :amount_less_than, t(:amount_less_than) %><br />
+        <%= f.text_field :amount_less_than, :size => 15 %>
+      </p>
       <div data-hook="admin_boletos_index_search_buttons">
         <p><%= button t(:search) %></p>
       </div>

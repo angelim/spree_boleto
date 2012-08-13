@@ -1,5 +1,7 @@
 --- 
 pt-BR:
+  amount_less_than: "Valor menor que:"
+  amount_greater_than_or_equal_to: "Valor maior ou igual a:"
   created_at: "Criado em:" 
   updated_at: "Atualizado em:"
   boleto:
