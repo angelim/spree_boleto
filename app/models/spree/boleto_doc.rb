@@ -17,6 +17,7 @@ module Spree
       banco = prefs.delete(:banco).classify      
       formato = prefs.delete(:formato)
       parcelas = prefs.delete(:parcelas)
+      per_page = prefs.delete(:per_page)
       @boleto = "Brcobranca::Boleto::#{banco}".constantize.new(prefs)
       @boleto.sacado = order.name
       @boleto.valor = payment.amount
