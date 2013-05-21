@@ -5,6 +5,8 @@ module Spree
     has_one :payment, :as => :source
     belongs_to :order
     attr_accessor :vencimento_fixo
+
+    validates :due_date, presence: true
     
     [:pending, :cancelled, :paid].each do |state|
       scope state, where("status = ?", state.to_s)

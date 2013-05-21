@@ -12,8 +12,8 @@
     </tr>
     <tr>
 			<td><%= payment.source.document_number %></td>
-			<td><%= l payment.source.created_at %></td>
-			<td><%= l payment.source.due_date %></td>
+			<td><%= l(payment.source.created_at) rescue "" %></td>
+			<td><%= l(payment.source.due_date) rescue "" %></td>
 			<td><%= payment.source.status %></td>
 			<td><%= payment.source.paid_at %></td>
 			<% if payment.pending? %>
