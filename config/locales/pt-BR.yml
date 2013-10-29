@@ -1,7 +1,8 @@
 --- 
 pt-BR:
-  amount_less_than: "Valor menor que:"
-  amount_greater_than_or_equal_to: "Valor maior ou igual a:"
+  amount_lt: "Valor menor que:"
+  amount_gteq: "Valor maior ou igual a:"
+  boleto_number: Número do Boleto
   created_at: "Criado em:" 
   updated_at: "Atualizado em:"
   boleto:

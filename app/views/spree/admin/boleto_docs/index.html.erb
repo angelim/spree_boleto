@@ -1,31 +1,31 @@
 <% content_for :sidebar do %>
   <div class="box" data-hook="admin_boletos_index_search">
     <h3><%= t(:search) %></h3>
-    <%= form_for [:admin, @search] do |f| %>
+    <%= search_form_for [:admin, @search] do |f| %>
       <%= label_tag nil, t(:date_range) %><br />
       <div class="date-range-filter">
         <div class="left sub-field">
-          <%= f.text_field :due_date_greater_than, :class => 'datepicker' %><br />
+          <%= f.text_field :due_date_gt, :class => 'datepicker' %><br />
           <%= label_tag nil, t(:start), :class => 'sub' %>
         </div>
         <div class="right sub-field">
-          <%= f.text_field :due_date_less_than, :class => 'datepicker' %><br />
+          <%= f.text_field :due_date_lt, :class => 'datepicker' %><br />
           <%= label_tag nil, t(:stop), :class => 'sub' %>
         </div>
       </div>
       <p><%= label_tag nil, t(:status) %><br />
-      <%= f.select :status_equals, [:pending, :paid, :cancelled].map {|s| [t("boleto.#{s}"), s]}, {:include_blank => true} %></p>
+      <%= f.select :status_eq, [:pending, :paid, :cancelled].map {|s| [t("boleto.#{s}"), s]}, {:include_blank => true} %></p>
       <p>
-        <%= label_tag nil, t(:document_number) %><br />
-        <%= f.text_field :document_number_like, :size => 25 %>
+        <%= label_tag nil, t(:boleto_number) %><br />
+        <%= f.text_field :document_number_cont, :size => 25 %>
       </p>
       <p>
-        <%= f.label :amount_greater_than_or_equal_to, t(:amount_greater_than_or_equal_to) %><br />
-        <%= f.text_field :amount_greater_than_or_equal_to, :size => 15 %>
+        <%= f.label :amount_gteq, t(:amount_gteq) %><br />
+        <%= f.text_field :amount_gteq, :size => 15 %>
       </p>
       <p>
-        <%= f.label :amount_less_than, t(:amount_less_than) %><br />
-        <%= f.text_field :amount_less_than, :size => 15 %>
+        <%= f.label :amount_lt, t(:amount_lt) %><br />
+        <%= f.text_field :amount_lt, :size => 15 %>
       </p>
       <div data-hook="admin_boletos_index_search_buttons">
         <p><%= button t(:search) %></p>
@@ -57,7 +57,7 @@
 		<% @boleto_docs.each do |boleto_doc| %>
 		<% next if boleto_doc.order.blank? || boleto_doc.payment.blank? %>
 			<tr data-hook="admin_boletos_index_rows">
-			  <td><%= l (@show_only_completed ? boleto_doc.paid_at : boleto_doc.due_date).to_date %></td>
+			  <td><%= l (@show_only_completed ? boleto_doc.paid_at : boleto_doc.due_date).to_date rescue nil %></td>
 			  <td><%= link_to boleto_doc.document_number, admin_order_payment_path(boleto_doc.order, boleto_doc.payment) %></td>
 			  <td><%= t("boleto.#{boleto_doc.status}") %></td>
 			  <td><%= link_to boleto_doc.order.number, admin_order_path(boleto_doc.order) %></td>
