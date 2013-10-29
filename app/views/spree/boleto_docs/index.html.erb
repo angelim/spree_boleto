@@ -7,7 +7,7 @@
 	</form>
 </div>
 
-<% @order.boleto_docs.each do |boleto_doc| %>
+<% @order.boleto_docs.pending.each do |boleto_doc| %>
 	<div class="boleto another-boleto">
 		<%= image_tag order_boleto_doc_path(@order.number, boleto_doc, :format => :image), :width => "800" %>
 	</div>

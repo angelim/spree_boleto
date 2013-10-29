@@ -14,12 +14,12 @@ Spree::CheckoutController.class_eval do
         acc_amount += amount
         params[:order][:payments_attributes] << {
           :payment_method_id => payment_method_id, 
-          :amount => amount, 
+          :amount => amount.to_f, 
           :state => "pending",
           :source_attributes => {
             :order_id => @order.id,
             :due_date => Date.today + index.month + Spree::Boleto::Configuration.preferences[:dias_vencimento],
-            :amount => amount,
+            :amount => amount.to_f,
             :status => "pending"
           }
         }
