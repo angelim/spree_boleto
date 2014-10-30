@@ -7,7 +7,7 @@ Gem::Specification.new do |s|
   s.version     = version
   s.summary     = 'Spree extension for integration with Boleto'
   s.description = 'Spree extension for integration with Boleto payment. Based on spree_pag_seguro and brcobranca gems'
-  s.required_ruby_version = '>= 1.9.2'
+  # s.required_ruby_version = '>= 1.9.2'
 
   s.author            = 'Alexandre Angelim'
   s.email             = 'angelim@angelim.com.br'
@@ -18,7 +18,7 @@ Gem::Specification.new do |s|
   s.requirements << 'none'
 
   s.add_dependency 'spree_core'
-  s.add_dependency 'brcobranca'
+  s.add_dependency 'brcobranca', '4.0.0'
 
   s.add_development_dependency 'factory_girl'
   s.add_development_dependency 'ffaker'
