@@ -2,7 +2,7 @@ Spree::CheckoutController.class_eval do
   alias_method :original_object_params, :object_params
   def object_params
     if @order.payment?
-      return original_object_params unless params[:order][:payments_attributes].first[:payment_method_id].to_i == Spree::Order.boleto_payment_method.id
+      return original_object_params unless params[:order][:payments_attributes] && params[:order][:payments_attributes].first[:payment_method_id].to_i == Spree::Order.boleto_payment_method.id
       instalments = params[:order][:instalments].to_i
       instalment_amount = (@order.total/instalments.to_i)
       payment_method_id = params[:order][:payments_attributes].first[:payment_method_id]
